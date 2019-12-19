@@ -15,10 +15,11 @@ class CreateTasksTable extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users'); 
             $table->string('detail');
-            $table->timestamp('planned_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('finished_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('planned_at')->nullable($value = true);
+            $table->timestamp('finished_at')->nullable($value = true);
             $table->timestamps();
         });
     }

@@ -5243,6 +5243,12 @@ input[type=button].btn-block {
   border-radius: 0.25rem;
 }
 
+.finish {
+  text-align: right;
+  margin-top: -30px;
+  padding:0 40px 0 40px;
+}
+
 .card > hr {
   margin-right: 0;
   margin-left: 0;
@@ -5259,6 +5265,7 @@ input[type=button].btn-block {
 }
 
 .card-body {
+  list-style: none;
   -webkit-box-flex: 1;
           flex: 1 1 auto;
   min-height: 1px;
@@ -5291,6 +5298,11 @@ input[type=button].btn-block {
   margin-bottom: 0;
   background-color: rgba(0, 0, 0, 0.03);
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.card-header a {
+  text-align: right;
+  margin-left: 10px;
 }
 
 .card-header:first-child {
@@ -5799,6 +5811,14 @@ a.badge-dark.focus {
   margin-bottom: 1rem;
   border: 1px solid transparent;
   border-radius: 0.25rem;
+}
+
+.alert .editer {
+  float: right;
+}
+
+.alert .del {
+  float: right;
 }
 
 .alert-heading {

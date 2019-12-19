@@ -17,12 +17,21 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/index', 'TasksController@index');
+    Route::get('/tasks/{task}', 'TasksController@show')->where('task', '[0-9]+');
+    Route::get('/tasks/create', 'TasksController@create');
+    Route::post('/tasks', 'TasksController@store');
+    Route::get('/tasks/{task}/edit', 'TasksController@edit');
+    Route::patch('/tasks/{task}', 'TasksController@update');
+    Route::delete('/tasks/{task}', 'TasksController@destroy');
+    Route::patch('/tasks/{task}', 'TasksController@finish');
 
-Auth::routes();
+    Route::get('/tag/{tag}', 'TagsController@show')->where('tag', '[0-9]+');
+    Route::get('/tags/create', 'TagsController@create');
+    Route::post('/tags', 'TagsController@store');
+    Route::delete('/tags/{tag}', 'TagsController@destroy');
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+    Route::post('/tasks/{task}/comments', 'CommentsController@store');
+    Route::delete('/tasks/{task}/comments/{comment}', 'CommentsController@destroy');
+});
