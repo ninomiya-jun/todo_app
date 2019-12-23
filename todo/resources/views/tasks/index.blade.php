@@ -11,16 +11,16 @@
                     @if ( $task->finished_at === null )
                     <li class="alert alert-success" role="alert">
                     <form method="post" action="{{ action('TasksController@finish', $task->id) }}"　style="display: inline">
-                    {{ csrf_field() }}
-                    {{ method_field('patch') }}
+                    @csrf
+                    @method('patch')
                     <input type="submit" name="finished_at" value="finish">
                     </form>
                     <a href="{{ action('TasksController@show', $task) }}">{{ $task->detail }}</a>（PlanDate:{{ substr($task->planned_at->format('Y/m/d'), 0, 10) }}）
                     <span class="editer"><a href="{{ action('TasksController@edit', $task) }}" class="edit">[Edit]</a>
                     <a href="#" data-id="{{ $task->id }}" class="del" onclick="deleteTask(this);">[x]</a><span>
                     <form action="{{ action('TasksController@destroy', $task->id) }}" id="form_{{ $task->id }}" method="post"　display="inline-block">
-                    {{ csrf_field() }}
-                    {{ method_field('delete') }}
+                    @csrf
+                    @method('delete')
                     </form>
                     </li>
                     @else
@@ -29,22 +29,21 @@
                     @empty
                     <li>No Task!!</li>
                     @endforelse
-                    {{ $tasks->links() }}
                 </ul>
                 <div class="card-header">Tags</div>
                 <ul class="card-body">
                     @forelse ($tags as $tag)
-                    <li class="alert alert-success" role="alert">{{ $tag->text }}
+                    <li class="alert alert-success" role="alert">
+                    <a href="{{ action('TagsController@show', $tag) }}">{{ $tag->text }}</a>
                     <a href="#" data-id="{{ $tag->id }}" class="del" onclick="deleteTag(this);">[x]</a>
                     　<form action="{{ action('TagsController@destroy', $tag->id) }}" id="form_{{ $tag->id }}" method="post"　display="inline-block">
-                    {{ csrf_field() }}
-                    {{ method_field('delete') }}
+                    @csrf
+                    @method('delete')
                     </form>
                     </li>
                     @empty
                     <li>No Tag!!</li>
                     @endforelse
-                    {{ $tags->links() }}
                 </ul>
                 
             </div>

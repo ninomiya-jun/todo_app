@@ -6,8 +6,8 @@
 Edit Task
 </h1>
 <form method="post" action="{{ url('/tasks' , $task->id) }}">
-{{ csrf_field() }}
-{{ method_field('patch') }}
+@csrf
+@method('patch')
   <p><input type="text" name="detail" placeholder="enter body" value="{{ old('detail', $task->detail) }}">
   @if ($errors->has('detail'))
   <span class="error">{{ $errors->first('detail') }}</span>

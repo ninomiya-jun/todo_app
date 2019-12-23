@@ -20,8 +20,8 @@ Comments
 
   <a href="#" data-id="{{ $comment->id }}" class="del" onclick="deletePost(this);">[x]</a>
 <form action="{{ action('CommentsController@destroy', [$task, $comment]) }}" id="form_{{ $comment->id }}" method="post"　display="inline-block">
-  {{ csrf_field() }}
-  {{ method_field('delete') }}
+@csrf
+@method('delete')
 </form>
 
 </li>
@@ -31,7 +31,7 @@ Comments
 </ul>
 
 <form method="post" action="{{ action('CommentsController@store' , $task) }}">
-{{ csrf_field() }}
+@csrf
   <p><input type="text" name="text" placeholder="enter text" value="{{ old('text') }}">
   @if ($errors->has('text'))
   <span class="error">{{ $errors->first('text') }}</span>

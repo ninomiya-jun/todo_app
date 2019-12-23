@@ -25,9 +25,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/tasks/{task}/edit', 'TasksController@edit');
     Route::patch('/tasks/{task}', 'TasksController@update');
     Route::delete('/tasks/{task}', 'TasksController@destroy');
-    Route::patch('/tasks/{task}', 'TasksController@finish');
+    Route::patch('/tasks/{task}/finish', 'TasksController@finish');
 
-    Route::get('/tag/{tag}', 'TagsController@show')->where('tag', '[0-9]+');
+    Route::get('/tags/{tag}', 'TagsController@show')->where('tag', '[0-9]+');
     Route::get('/tags/create', 'TagsController@create');
     Route::post('/tags', 'TagsController@store');
     Route::delete('/tags/{tag}', 'TagsController@destroy');

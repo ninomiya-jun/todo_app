@@ -8,6 +8,12 @@ use App\Tag;
 
 class TagsController extends Controller
 {
+    public function show(Task $tasks, Tag $tag) {
+        return view('tags.show')->with([
+       'tasks' => $tasks,
+       'tag' => $tag
+       ]);
+    }
 
     public function create() {
         return view('tags.create');

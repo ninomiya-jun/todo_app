@@ -6,7 +6,7 @@
 New Task
 </h1>
 <form method="post" action="{{ url('/tasks') }}">
-{{ csrf_field() }}
+@csrf
   <p><input type="text" name="detail" placeholder="enter body" value="{{ old('detail') }}">
   @if ($errors->has('detail'))
   <span class="error">{{ $errors->first('detail') }}</span>
