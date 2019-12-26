@@ -32,7 +32,7 @@ class TasksController extends Controller
         return view('tasks.create')->with('tags', $tags);
     }
 
-    public function store(Request $request) {
+    public function store(TaskRequest $request) {
         $task = new Task();
         $tags = $request->input('tags');
         $task->detail = $request->detail;
@@ -51,7 +51,7 @@ class TasksController extends Controller
     ]);
     }
 
-    public function update(Request $request, Task $task) {
+    public function update(TaskRequest $request, Task $task) {
         $tags = $request->input('tags');
         $task->detail = $request->detail;
         $task->planned_at = $request->input('planned_at');

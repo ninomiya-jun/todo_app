@@ -6,6 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Todo List　<a href="{{ url('/tasks/create') }}" class="header_menu">new task</a>　<a href="{{ url('/tags/create') }}" class="header_menu">new tag</a></div>
+                
                 <ul class="card-body">
                     @forelse ($tasks as $task)
                     @if ( $task->finished_at === null )
@@ -24,10 +25,10 @@
                     </form>
                     </li>
                     @else
-                    
                     @endif
                     @empty
                     <li>No Task!!</li>
+                    @php($oldTask = $task)
                     @endforelse
                 </ul>
                 <div class="card-header">Tags</div>

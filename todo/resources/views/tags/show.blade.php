@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Todo Lists</div>
+                <div class="card-header">{{ $tag->text }}'s tasks</div>
                 <ul class="card-body">
                     @forelse ($tag->tasks as $task)
                     @if ( $task->finished_at === null )

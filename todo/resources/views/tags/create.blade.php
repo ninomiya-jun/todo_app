@@ -7,9 +7,9 @@ New Tags
 </h1>
 <form method="post" action="{{ url('/tags') }}">
 {{ csrf_field() }}
-  <p><input type="text" name="text" placeholder="enter body" value="{{ old('title') }}">
-  @if ($errors->has('title'))
-  <span class="error">{{ $errors->first('title') }}</span>
+  <p style="color: red"><input type="text" name="text" placeholder="enter body" value="{{ old('title') }}">
+  @if ($errors->has('text'))
+  <span class="error">{{ $errors->first('text') }}</span>
   @endif
   </p>
   <p><input type="submit" value="Add"></p>

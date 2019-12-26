@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TaskRequest extends FormRequest
+class TagRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,19 +24,13 @@ class TaskRequest extends FormRequest
     public function rules()
     {
         return [
-            
-            'detail' => 'required',
-            'user_id' => 'required',
-            'planned_at' => 'required'
-
+            'text' => 'required'
         ];
     }
 
     public function messages() {
         return [
-            'detail.required' => 'please enter Task!!',
-            'planned_at.required' => 'please check Date!!'
+            'text.required' => 'please enter Tag!!',
         ];
     }
-
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Task;
 use App\Tag;
+use App\Http\Requests\TagRequest;
 
 class TagsController extends Controller
 {
@@ -19,7 +20,7 @@ class TagsController extends Controller
         return view('tags.create');
     }
 
-    public function store(Request $request) {
+    public function store(TagRequest $request) {
         $tag = new Tag();
         $tag->text = $request->text;
         $tag->save();
