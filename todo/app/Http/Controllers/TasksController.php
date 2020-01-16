@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Task;
 use App\Tag;
+use App\Comment;
 use App\Http\Requests\TaskRequest;
 use Carbon\Carbon;
 
@@ -61,8 +62,9 @@ class TasksController extends Controller
     }
 
     public function destroy(Task $task) {
-        $task->delete();
         $task->tags()->detach();
+        $task->comments()->delete(); //コメントを一緒に消す動作//test
+        $task->delete();
         return redirect('/index');
     }
 
@@ -70,6 +72,13 @@ class TasksController extends Controller
         $task->finished_at = Carbon::now();
         $task->save();
         return redirect('/index');
+    }
+
+    public function finished() {
+        $tasks = Task::latest('finished_at')->get();
+        return view('tasks.finish')->with([
+       'tasks' => $tasks
+        ]);
     }
 
 }

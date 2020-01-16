@@ -26,7 +26,6 @@ class TaskRequest extends FormRequest
         return [
             
             'detail' => 'required',
-            'user_id' => 'required',
             'planned_at' => 'required'
 
         ];

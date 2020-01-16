@@ -13,7 +13,16 @@
                     <a href="{{ action('TasksController@show', $task) }}">{{ $task->detail }}</a>（PlanDate:{{ substr($task->planned_at->format('Y/m/d'), 0, 10) }}）
                     </li>
                     @else
-                    
+                    <li class="alert alert-success" role="alert">
+                    <a href="{{ action('TasksController@show', $task) }}">{{ $task->detail }}</a>（PlanDate:{{ substr($task->planned_at->format('Y/m/d'), 0, 10) }}）
+                    <span style=" 
+                    width: 50px;
+                    text-align: center;
+                    background-color: pink; 
+                    font-size: 8px;
+                    border-radius: 10px;
+                    float:right">Finish</span>
+                    </li>
                     @endif
                     @empty
                     <li>No Task!!</li>

@@ -9,7 +9,8 @@ use App\Http\Requests\TagRequest;
 
 class TagsController extends Controller
 {
-    public function show(Task $tasks, Tag $tag) {
+    public function show(Tag $tag) {
+        $tasks = Task::latest('planned_at')->get();
         return view('tags.show')->with([
        'tasks' => $tasks,
        'tag' => $tag

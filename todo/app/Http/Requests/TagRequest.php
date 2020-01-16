@@ -30,7 +30,7 @@ class TagRequest extends FormRequest
 
     public function messages() {
         return [
-            'text.required' => 'please enter Tag!!',
+            'text.required' => 'please enter Tag!!'
         ];
     }
 }
