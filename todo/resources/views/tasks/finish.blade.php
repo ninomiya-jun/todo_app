@@ -21,10 +21,10 @@
                     border-radius: 30px;
                     float: right;"
                     >
-                    <form action="{{ action('TasksController@destroy', $task->id) }}" id="form_{{ $task->id }}" method="post"　display="inline-block">
+                    <!-- <form action="{{ action('TasksController@destroy', $task->id) }}" id="form_{{ $task->id }}" method="post"　display="inline-block">
                     @csrf
                     @method('delete')
-                    </form>
+                    </form> -->
                     </li>
                     @endif
                     @empty
@@ -45,6 +45,28 @@ document.getElementById('form_' + e.dataset.id).submit();
 }
 }
 
+$(function() {
+    $('.del').on('click', function() {
+        var id = $(this).data('id');
+        var clickel = $(this);
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: "{{ url('tasks') }}/" + id,
+            type: 'POST',
+            data: {'task': id, '_method': 'DELETE'}
+        })
+        // Ajaxリクエストが成功した場合
+        .done(function(data) {
+            clickel.parents('li').remove();
+        })
+        // Ajaxリクエストが失敗した場合
+        .fail(function(data) {
+            alert('エラー');
+        });
+    });
+});
 
 </script>
 
